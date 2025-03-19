@@ -103,7 +103,6 @@ local case_spots = {
     { 3, 0 }, { 3, 1 }, { 3, 2 }, { 3, 3 }, { 3, 4 }, { 3, 5 }
 }
 
-
 local case_pos = {
     { x = col_1, y = row_1_y },
     { x = col_2, y = row_1_y },
@@ -418,8 +417,7 @@ function TIC()
 end
 
 function _UPDATE()
-    if game_state == GAMESTATES.pick_case or
-        game_state == GAMESTATES.offer then
+    if game_state == GAMESTATES.pick_case then
         show_values = btn(6)
     end
 
@@ -459,15 +457,18 @@ function _DRAW()
         draw_display_values()
     end
 
-    if game_state == GAMESTATES.pick_case or
-        game_state == GAMESTATES.offer then
+    if game_state == GAMESTATES.pick_case then
+        print("Hold A to see remaining", 3, 128, FONT_COLOR, false, 1, true)
         if not show_values then
             print("Press Z to select", 3, 120, FONT_COLOR, false, 1, true)
-            print("Hold A to see remaining", 3, 128, FONT_COLOR, false, 1, true)
             if player_case then
                 print("Your Case: " .. player_case.number, 110, 128, FONT_COLOR, false, 1, true)
             end
         end
+    end
+
+    if game_state == GAMESTATES.offer then
+        print("Press Z to select", 3, 120, FONT_COLOR, false, 1, true)
     end
 end
 
@@ -550,14 +551,16 @@ function update_topbar(n_cases)
 end
 
 function move_selector(dir)
-    if dir == "up" then
-        selector_index[1] = clamp(0, selector_index[1] - 1, 4)
-    elseif dir == "down" then
-        selector_index[1] = clamp(0, selector_index[1] + 1, 3)
-    elseif dir == "left" then
-        selector_index[2] = clamp(0, selector_index[2] - 1, 5)
-    elseif dir == "right" then
-        selector_index[2] = clamp(0, selector_index[2] + 1, 5)
+    if can_player_input then
+        if dir == "up" then
+            selector_index[1] = clamp(0, selector_index[1] - 1, 4)
+        elseif dir == "down" then
+            selector_index[1] = clamp(0, selector_index[1] + 1, 3)
+        elseif dir == "left" then
+            selector_index[2] = clamp(0, selector_index[2] - 1, 5)
+        elseif dir == "right" then
+            selector_index[2] = clamp(0, selector_index[2] + 1, 5)
+        end
     end
 end
 
@@ -634,6 +637,7 @@ function draw_offer()
     print("Offer: $" .. comma_value(current_offer), 56, 30, FONT_COLOR)
     btn_deal:draw()
     btn_no_deal:draw()
+    draw_display_values()
 end
 
 function draw_game_over()
@@ -858,4 +862,3 @@ end
 -- <PALETTE>
 -- 000:1a1c2c5d275db13e53ef7d57ffcd75a7f07038b76425717929366f3b5dc941a6f673eff7f4f4f494b0c2566c86333c57
 -- </PALETTE>
-
