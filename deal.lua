@@ -176,7 +176,7 @@ function button:draw()
 end
 
 function show_case_value(c)
-    print("Case " .. c.cover_num .. " had", 185, 40, FONT_COLOR, false, 1, true)
+    print("Case " .. c.cover_num .. " had", 185, 140, FONT_COLOR, false, 1, true)
     print(c.inside_num, 185, 40, 11, FONT_COLOR)
 end
 
@@ -417,9 +417,9 @@ function TIC()
 end
 
 function _UPDATE()
-    if game_state == GAMESTATES.pick_case then
-        show_values = btn(6)
-    end
+    -- if game_state == GAMESTATES.pick_case then
+    --     show_values = btn(6)
+    -- end
 
     top_bar:update()
 
@@ -453,23 +453,7 @@ function _DRAW()
         draw_game_over()
     end
 
-    if show_values then
-        draw_display_values()
-    end
-
-    if game_state == GAMESTATES.pick_case then
-        print("Hold A to see remaining", 3, 128, FONT_COLOR, false, 1, true)
-        if not show_values then
-            print("Press Z to select", 3, 120, FONT_COLOR, false, 1, true)
-            if player_case then
-                print("Your Case: " .. player_case.number, 110, 128, FONT_COLOR, false, 1, true)
-            end
-        end
-    end
-
-    if game_state == GAMESTATES.offer then
-        print("Press Z to select", 3, 120, FONT_COLOR, false, 1, true)
-    end
+    
 end
 
 function update_title()
@@ -480,7 +464,7 @@ end
 
 function update_pick_case()
     case_manager:update()
-    if can_player_input and not show_values then
+    if can_player_input then
         if btnp(0) then
             move_selector("up")
         elseif btnp(1) then
@@ -517,7 +501,7 @@ function update_offer()
         offer_index = clamp(1, offer_index + 1, 2)
     end
 
-    if btnp(4) and not show_values then -- Gamepad (A)
+    if btnp(4) then -- Gamepad (A)
         for b in all({ btn_deal, btn_no_deal }) do
             b:update()
             if b.is_hovered then
@@ -600,10 +584,19 @@ function draw_pick_case()
         end
     end
 
+    draw_display_values()
+
     if case_manager.t < 90 then
-        print("Case " .. case_manager.cover_num .. " had", 185, 40, FONT_COLOR, false, 1, true)
-        print("$" .. comma_value(case_manager.inside_num), 185, 50, FONT_COLOR, false, 1, true) --, false, 1, true)
+        print("Case " .. case_manager.cover_num .. " had", 185, 120, FONT_COLOR, false, 1, true)
+        print("$" .. comma_value(case_manager.inside_num), 185, 128, FONT_COLOR, false, 1, true) --, false, 1, true)
     end
+
+    print("Press Z to select", 3, 128, FONT_COLOR, false, 1, true)
+    if player_case then
+        print("Your Case: " .. player_case.number, 110, 128, FONT_COLOR, false, 1, true)
+    end
+
+    
 end
 
 function draw_display_values()
@@ -638,6 +631,10 @@ function draw_offer()
     btn_deal:draw()
     btn_no_deal:draw()
     draw_display_values()
+
+
+    print("Press Z to select", 3, 128, FONT_COLOR, false, 1, true)
+
 end
 
 function draw_game_over()
@@ -862,3 +859,4 @@ end
 -- <PALETTE>
 -- 000:1a1c2c5d275db13e53ef7d57ffcd75a7f07038b76425717929366f3b5dc941a6f673eff7f4f4f494b0c2566c86333c57
 -- </PALETTE>
+
