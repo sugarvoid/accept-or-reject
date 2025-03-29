@@ -9,11 +9,10 @@ function button.new(str, pos, callback, col)
     _b.w = 50
     _b.h = 50
     _b.callback = callback
-    _b.b_color = 1
+    --_b.b_color = 1
     _b.col = col
     _b.hovered = false
     _b.txt_col = 7
-    _b.index = idx
     return _b
 end
 

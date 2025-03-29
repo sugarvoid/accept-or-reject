@@ -1,34 +1,121 @@
---include "case.lua"
---include "button.lua"
---include "topbar.lua"
-
-FONT_COLOR = 9
-PLEASE_RENAME = { 6, 5, 4, 3, 2, 1, 1, 1, 0 }
-BORDER_COLOR = 12
-GAMESTATES = {
-    title = 0,
-    pick_case = 1,
-    display_values = 2,
-    offer = 3,
-    game_over = 5,
-    deal_accepted = 6
-}
-
-_start_y = 18
-row_1_y = 15 + 16
-row_2_y = 35 + 16
-row_3_y = 55 + 16
-row_4_y = 75 + 16
-
-col_1 = 5
-col_2 = 30
-col_3 = 55
-col_4 = 105 - 25
-col_5 = 130 - 25
-col_6 = 155 - 25
-
 
 function _init()
+    FONT_COLOR = 9
+    PLEASE_RENAME = { 6, 5, 4, 3, 2, 1, 1, 1, 0 }
+    BORDER_COLOR = 12
+    GAMESTATES = {
+        title = 0,
+        pick_case = 1,
+        display_values = 2,
+        offer = 3,
+        game_over = 5,
+        deal_accepted = 6
+    }
+
+    --TODO: Remove math
+    --TODO: Make constants to uppercase
+    START_Y = 18
+    row_1_y = 15 + 16
+    row_2_y = 35 + 16
+    row_3_y = 55 + 16
+    row_4_y = 75 + 16
+
+    COL_1 = 5
+    col_2 = 30
+    col_3 = 55
+    col_4 = 105 - 25
+    col_5 = 130 - 25
+    col_6 = 155 - 25
+
+
+    case_pos = {
+        { x = COL_1, y = row_1_y },
+        { x = col_2, y = row_1_y },
+        { x = col_3, y = row_1_y },
+        { x = col_4, y = row_1_y },
+        { x = col_5, y = row_1_y },
+        { x = col_6, y = row_1_y },
+
+        { x = COL_1, y = row_2_y },
+        { x = col_2, y = row_2_y },
+        { x = col_3, y = row_2_y },
+        { x = col_4, y = row_2_y },
+        { x = col_5, y = row_2_y },
+        { x = col_6, y = row_2_y },
+
+        { x = COL_1, y = row_3_y },
+        { x = col_2, y = row_3_y },
+        { x = col_3, y = row_3_y },
+        { x = col_4, y = row_3_y },
+        { x = col_5, y = row_3_y },
+        { x = col_6, y = row_3_y },
+
+        { x = COL_1, y = row_4_y },
+        { x = col_2, y = row_4_y },
+        { x = col_3, y = row_4_y },
+        { x = col_4, y = row_4_y },
+        { x = col_5, y = row_4_y },
+        { x = col_6, y = row_4_y },
+    }
+
+
+    case_values = {
+        1,
+        3,
+        5,
+        10,
+        25,
+        50,
+        75,
+        100,
+        200,
+        250,
+        500,
+        750,
+        1000,
+        2500,
+        5000,
+        10000,
+        25000,
+        50000,
+        100000,
+        250000,
+        500000,
+        750000,
+        900000,
+        1000000
+    }
+
+
+    game_values = {
+        { value = 1,       in_play = true },
+        { value = 3,       in_play = true },
+        { value = 5,       in_play = true },
+        { value = 10,      in_play = true },
+        { value = 25,      in_play = true },
+        { value = 50,      in_play = true },
+        { value = 75,      in_play = true },
+        { value = 100,     in_play = true },
+        { value = 200,     in_play = true },
+        { value = 250,     in_play = true },
+        { value = 500,     in_play = true },
+        { value = 750,     in_play = true },
+        { value = 1000,    in_play = true },
+        { value = 2500,    in_play = true },
+        { value = 5000,    in_play = true },
+        { value = 10000,   in_play = true },
+        { value = 25000,   in_play = true },
+        { value = 50000,   in_play = true },
+        { value = 100000,  in_play = true },
+        { value = 250000,  in_play = true },
+        { value = 500000,  in_play = true },
+        { value = 750000,  in_play = true },
+        { value = 900000,  in_play = true },
+        { value = 1000000, in_play = true }
+    }
+
+
+
     current_offer = 0
     player_case = nil
     show_values = false
@@ -44,7 +131,6 @@ function _init()
     offer_btns = {}
     add(offer_btns, btn_deal)
     add(offer_btns, btn_no_deal)
-
     vid(3)
 end
 
@@ -58,7 +144,7 @@ function _update()
     if mb == 1 then
         if m_delay == 0 then
             on_mouse_click(mx, my)
-            m_delay += 1
+            m_delay = m_delay + 1
             return
         end
     else
@@ -165,91 +251,6 @@ case_manager = {
     end,
 }
 
-case_pos = {
-    { x = col_1, y = row_1_y },
-    { x = col_2, y = row_1_y },
-    { x = col_3, y = row_1_y },
-    { x = col_4, y = row_1_y },
-    { x = col_5, y = row_1_y },
-    { x = col_6, y = row_1_y },
-
-    { x = col_1, y = row_2_y },
-    { x = col_2, y = row_2_y },
-    { x = col_3, y = row_2_y },
-    { x = col_4, y = row_2_y },
-    { x = col_5, y = row_2_y },
-    { x = col_6, y = row_2_y },
-
-    { x = col_1, y = row_3_y },
-    { x = col_2, y = row_3_y },
-    { x = col_3, y = row_3_y },
-    { x = col_4, y = row_3_y },
-    { x = col_5, y = row_3_y },
-    { x = col_6, y = row_3_y },
-
-    { x = col_1, y = row_4_y },
-    { x = col_2, y = row_4_y },
-    { x = col_3, y = row_4_y },
-    { x = col_4, y = row_4_y },
-    { x = col_5, y = row_4_y },
-    { x = col_6, y = row_4_y },
-}
-
-
-case_values = {
-    1,
-    3,
-    5,
-    10,
-    25,
-    50,
-    75,
-    100,
-    200,
-    250,
-    500,
-    750,
-    1000,
-    2500,
-    5000,
-    10000,
-    25000,
-    50000,
-    100000,
-    250000,
-    500000,
-    750000,
-    900000,
-    1000000
-}
-
-
-game_values = {
-    { value = 1,       in_play = true },
-    { value = 3,       in_play = true },
-    { value = 5,       in_play = true },
-    { value = 10,      in_play = true },
-    { value = 25,      in_play = true },
-    { value = 50,      in_play = true },
-    { value = 75,      in_play = true },
-    { value = 100,     in_play = true },
-    { value = 200,     in_play = true },
-    { value = 250,     in_play = true },
-    { value = 500,     in_play = true },
-    { value = 750,     in_play = true },
-    { value = 1000,    in_play = true },
-    { value = 2500,    in_play = true },
-    { value = 5000,    in_play = true },
-    { value = 10000,   in_play = true },
-    { value = 25000,   in_play = true },
-    { value = 50000,   in_play = true },
-    { value = 100000,  in_play = true },
-    { value = 250000,  in_play = true },
-    { value = 500000,  in_play = true },
-    { value = 750000,  in_play = true },
-    { value = 900000,  in_play = true },
-    { value = 1000000, in_play = true }
-}
 
 
 function reset_game()
@@ -402,8 +403,8 @@ function draw_pick_case()
     if is_case_opening then
         cls()
         if case_manager.t < 90 then
-            print("Case " .. case_manager.cover_num .. " had", 85, 60, FONT_COLOR) --, false, 1, true)
-            print("$" .. comma_value(case_manager.inside_num), 85, 70, FONT_COLOR) --, false, 1, true) --, false, 1, true)
+            print("Case " .. case_manager.cover_num .. " had", 85, 60, FONT_COLOR)
+            print("$" .. comma_value(case_manager.inside_num), 85, 70, FONT_COLOR)
         end
         return
     end
@@ -427,7 +428,7 @@ function draw_display_values()
         else
             col = 5
         end
-        print("$" .. comma_value(game_values[i].value), 37 + 123, _start_y + (i - 1) * 9, col)
+        print("$" .. comma_value(game_values[i].value), 37 + 123, START_Y + (i - 1) * 9, col)
     end
 
     for i2 = 1, 12 do
@@ -436,7 +437,7 @@ function draw_display_values()
         else
             col = 5
         end
-        print("$" .. comma_value(game_values[i2 + 12].value), 65 + 123, _start_y + (i2 - 1) * 9, col, false, 1, true)
+        print("$" .. comma_value(game_values[i2 + 12].value), 65 + 123, START_Y + (i2 - 1) * 9, col)
     end
 end
 
