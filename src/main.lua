@@ -219,11 +219,11 @@ end
 cases = {}
 
 case_manager = {
-    t = 90,
+    t = 80,
     cover_num = 0,
     inside_num = 0,
     update = function(self)
-        is_case_opening = self.t < 90
+        is_case_opening = self.t < 80
 
         if self.t < 90 then
             self.t = self.t + 1
@@ -338,7 +338,7 @@ function reject_deal()
 end
 
 function update_title()
-    if key("space") then
+    if keyp("space") then
         start_game()
     end
 end
@@ -371,14 +371,16 @@ function update_topbar(n_cases)
 end
 
 function update_deal_accepted()
-    if key("space") then
+    if keyp("space") then
         reset_game()
+        return
     end
 end
 
 function update_game_over()
-    if key("space") then
+    if keyp("space") then
         reset_game()
+        return
     end
 end
 
