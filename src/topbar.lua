@@ -1,7 +1,7 @@
 top_bar = {
     x = 0,
-    y = 1,
-    str = "test",
+    y = 2,
+    str = "",
     w = 0,
     col = FONT_COLOR,
     set_text = function(self, text)

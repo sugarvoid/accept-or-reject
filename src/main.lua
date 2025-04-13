@@ -386,11 +386,11 @@ end
 
 function draw_border()
     top_bar:draw()
-    line(0, 8, 240, 8, BORDER_COLOR)
+    line(0, 10, 240, 10, BORDER_COLOR)
     line(0, 134, 240, 134, BORDER_COLOR)
     line(0, 0, 240, 0, BORDER_COLOR)
     line(0, 0, 0, 134, BORDER_COLOR)
-    line(155, 8, 155, 155, BORDER_COLOR)
+    line(155, 10, 155, 155, BORDER_COLOR)
     line(239, 0, 239, 134, BORDER_COLOR)
 end
 
