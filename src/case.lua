@@ -52,7 +52,6 @@ function case:was_clicked()
     else
         self.visable = false
     end
-    --open_case(self)
     cases_to_pick = clamp(0, cases_to_pick - 1, 6)
     case_manager:reset(self)
     update_game_value(self.value, false)

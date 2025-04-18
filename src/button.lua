@@ -2,18 +2,18 @@ button = {}
 button.__index = button
 
 function button.new(str, pos, callback, col)
-    local _b = setmetatable({}, button)
-    _b.text = str
-    _b.x = pos[1]
-    _b.y = pos[2]
-    _b.w = 50
-    _b.h = 50
-    _b.callback = callback
-    --_b.b_color = 1
-    _b.col = col
-    _b.hovered = false
-    _b.txt_col = 7
-    return _b
+    local b = setmetatable({}, button)
+    b.text = str
+    b.x = pos[1]
+    b.y = pos[2]
+    b.w = 50
+    b.h = 50
+    b.callback = callback
+    --b.b_color = 1
+    b.col = col
+    b.hovered = false
+    b.txt_col = 7
+    return b
 end
 
 function button:update()

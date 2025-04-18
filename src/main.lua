@@ -1,13 +1,13 @@
-
 function _init()
-    window{
-        width      = 240,
-        height     = 135,
+    window {
+        width = 240,
+        height = 135,
         resizeable = false,
-        title      = "Accept or Reject"
+        title = "Accept or Reject"
     }
+
     FONT_COLOR = 9
-    PLEASE_RENAME = { 6, 5, 4, 3, 2, 1, 1, 1, 0 }
+    CASES_PER_ROUND = { 6, 5, 4, 3, 2, 1, 1, 1, 0 }
     BORDER_COLOR = 12
     GAMESTATES = {
         title = 0,
@@ -18,54 +18,50 @@ function _init()
         deal_accepted = 6
     }
 
-    --TODO: Remove math
-    --TODO: Make constants to uppercase
     START_Y = 18
-    row_1_y = 15 + 16
-    row_2_y = 35 + 16
-    row_3_y = 55 + 16
-    row_4_y = 75 + 16
+    ROW_1_Y = 31
+    ROW_2_Y = 51
+    ROW_3_Y = 71
+    ROW_4_Y = 91
 
-    COL_1 = 5
-    col_2 = 30
-    col_3 = 55
-    col_4 = 105 - 25
-    col_5 = 130 - 25
-    col_6 = 155 - 25
+    COL_1_X = 5
+    COL_2_X = 30
+    COL_3_X = 55
+    COL_4_X = 80
+    COL_5_X = 105
+    COL_6_X = 130
 
+    CASE_POS = {
+        { x = COL_1_X, y = ROW_1_Y },
+        { x = COL_2_X, y = ROW_1_Y },
+        { x = COL_3_X, y = ROW_1_Y },
+        { x = COL_4_X, y = ROW_1_Y },
+        { x = COL_5_X, y = ROW_1_Y },
+        { x = COL_6_X, y = ROW_1_Y },
 
-    case_pos = {
-        { x = COL_1, y = row_1_y },
-        { x = col_2, y = row_1_y },
-        { x = col_3, y = row_1_y },
-        { x = col_4, y = row_1_y },
-        { x = col_5, y = row_1_y },
-        { x = col_6, y = row_1_y },
+        { x = COL_1_X, y = ROW_2_Y },
+        { x = COL_2_X, y = ROW_2_Y },
+        { x = COL_3_X, y = ROW_2_Y },
+        { x = COL_4_X, y = ROW_2_Y },
+        { x = COL_5_X, y = ROW_2_Y },
+        { x = COL_6_X, y = ROW_2_Y },
 
-        { x = COL_1, y = row_2_y },
-        { x = col_2, y = row_2_y },
-        { x = col_3, y = row_2_y },
-        { x = col_4, y = row_2_y },
-        { x = col_5, y = row_2_y },
-        { x = col_6, y = row_2_y },
+        { x = COL_1_X, y = ROW_3_Y },
+        { x = COL_2_X, y = ROW_3_Y },
+        { x = COL_3_X, y = ROW_3_Y },
+        { x = COL_4_X, y = ROW_3_Y },
+        { x = COL_5_X, y = ROW_3_Y },
+        { x = COL_6_X, y = ROW_3_Y },
 
-        { x = COL_1, y = row_3_y },
-        { x = col_2, y = row_3_y },
-        { x = col_3, y = row_3_y },
-        { x = col_4, y = row_3_y },
-        { x = col_5, y = row_3_y },
-        { x = col_6, y = row_3_y },
-
-        { x = COL_1, y = row_4_y },
-        { x = col_2, y = row_4_y },
-        { x = col_3, y = row_4_y },
-        { x = col_4, y = row_4_y },
-        { x = col_5, y = row_4_y },
-        { x = col_6, y = row_4_y },
+        { x = COL_1_X, y = ROW_4_Y },
+        { x = COL_2_X, y = ROW_4_Y },
+        { x = COL_3_X, y = ROW_4_Y },
+        { x = COL_4_X, y = ROW_4_Y },
+        { x = COL_5_X, y = ROW_4_Y },
+        { x = COL_6_X, y = ROW_4_Y },
     }
 
-
-    case_values = {
+    CASE_VALUES = {
         1,
         3,
         5,
@@ -92,7 +88,6 @@ function _init()
         1000000
     }
 
-
     game_values = {
         { value = 1,       in_play = true },
         { value = 3,       in_play = true },
@@ -117,10 +112,29 @@ function _init()
         { value = 500000,  in_play = true },
         { value = 750000,  in_play = true },
         { value = 900000,  in_play = true },
-        { value = 1000000, in_play = true }
+        { value = 1000000, in_play = true },
     }
 
-
+    top_bar = {
+        x = 0,
+        y = 2,
+        str = "",
+        w = 0,
+        col = FONT_COLOR,
+        set_text = function(self, text)
+            self.str = text
+            self.w = print(text, 0, -6)
+        end,
+        draw = function(self)
+            print(self.str, self.x, self.y, FONT_COLOR)
+        end,
+        update = function(self)
+            self.x = self.x - 0.5
+            if self.x + self.w <= 0 then
+                self.x = 241
+            end
+        end,
+    }
 
     current_offer = 0
     player_case = nil
@@ -132,12 +146,13 @@ function _init()
     mx, my, mb = nil, nil, nil
     game_state = GAMESTATES.title
     is_case_opening = false
+    lbl_play = Label.new("Play", 70, 110, FONT_COLOR)
+    lbl_play.callback = start_game
     btn_deal = button.new("ACCEPT", { 20, 50 }, accept_deal, 27, 1)
     btn_no_deal = button.new("REJECT", { 95, 50 }, reject_deal, 24, 2)
     offer_btns = {}
     add(offer_btns, btn_deal)
     add(offer_btns, btn_no_deal)
-    --vid(3)
 end
 
 function _update()
@@ -186,10 +201,6 @@ function _draw()
     elseif game_state == GAMESTATES.game_over then
         draw_game_over()
     end
-
-    if not is_case_opening then
-        spr(1, mx - 2, my - 2)
-    end
 end
 
 function on_mouse_click(x, y)
@@ -197,8 +208,11 @@ function on_mouse_click(x, y)
         return
     end
 
-    --notify("click on " .. x .. "," .. y)
     if game_state == GAMESTATES.title then
+        if lbl_play.hovered then
+            lbl_play:do_func()
+            return
+        end
     elseif game_state == GAMESTATES.pick_case then
         if can_player_click then
             for c in all(cases) do
@@ -257,8 +271,6 @@ case_manager = {
     end,
 }
 
-
-
 function reset_game()
     game_state = GAMESTATES.title
     offer_index = 1
@@ -303,7 +315,7 @@ end
 
 function goto_next_round()
     round = round + 1
-    cases_to_pick = PLEASE_RENAME[round]
+    cases_to_pick = CASES_PER_ROUND[round]
     update_topbar(cases_to_pick)
     if round < 9 then
         game_state = GAMESTATES.pick_case
@@ -312,9 +324,9 @@ end
 
 function setup_cases()
     cases = {}
-    shuffle(case_values)
+    shuffle(CASE_VALUES)
     for i = 1, 24 do
-        table.insert(cases, case.new(i, case_values[i], case_pos[i]))
+        table.insert(cases, case.new(i, CASE_VALUES[i], CASE_POS[i]))
     end
 end
 
@@ -344,9 +356,7 @@ function reject_deal()
 end
 
 function update_title()
-    if keyp("space") then
-        start_game()
-    end
+    lbl_play:update()
 end
 
 function update_pick_case()
@@ -404,7 +414,7 @@ function draw_title()
     print("Accept", 50, 42, FONT_COLOR)
     print("or", 80, 56, FONT_COLOR)
     print("Reject", 90, 72, FONT_COLOR)
-    print("Press SPACE to play", 70, 110, FONT_COLOR)
+    lbl_play:draw()
 end
 
 function draw_pick_case()
