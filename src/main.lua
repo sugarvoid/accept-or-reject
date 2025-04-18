@@ -365,7 +365,7 @@ end
 function update_topbar(n_cases)
     local _txt = ""
     if player_case then
-        if round < 1 then
+        if n_cases > 1 then
             _txt = "PICK " .. n_cases .. " MORE CASES"
         else
             _txt = "PICK " .. n_cases .. " CASE"
