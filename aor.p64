@@ -4,33 +4,221 @@ version 2
 :: gfx/
 :: gfx/0.gfx
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM4OjM5Iixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOToyNjo0MSIscmV2aXNpb249ODk0XV1sejQAjAAAABoxAADzIXtbMF09e2JtcD1weHUA
+NC0xOCAxOTo1Njo1NCIscmV2aXNpb249OTQyXV1sejQAjAAAABoxAADzIXtbMF09e2JtcD1weHUA
 QyAQEATwVgcQB8AX0BfABxAH8FYsZmxhZ3M9MCxwYW5feAgAynk9MCx6b29tPTh9LD4AQAAH0AcE
 AC-wzjkAHC-w8DEA------------------------------------------------------------
 ----plBtPTh9fQ==
 :: gfx/.info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM5OjEyIixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOToyNjo0MiJdXQ==
+NC0xOCAxOTo1Njo1NCJdXQ==
 :: map/
 :: map/0.map
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM4OjM5Iixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOToyNjo0MSIscmV2aXNpb249ODcyXV1sejQAaAAAAFgQAADwCHt7Ym1wPXVzZXJkYXRh
+NC0xOCAxOTo1Njo1NCIscmV2aXNpb249OTIwXV1sejQAaAAAAFgQAADwCHt7Ym1wPXVzZXJkYXRh
 KCJpMTYiLDMyAwAvIjABAP--------------------vxCCIpLGhpZGRlbj1mYWxzZSxwYW5feD0w
 CADSeT0wLHRpbGVfaD0xNgoAEHcKAIB6b29tPTF9fQ==
 :: map/.info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM5OjEyIixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOToyNjo0MiJdXQ==
+NC0xOCAxOTo1Njo1NCJdXQ==
 :: sfx/
 :: sfx/0.sfx
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM4OjQwIixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOToyNjo0MSIscmV2aXNpb249ODc1XV1sejQA3QAAALYKAAD-MHB4dQADKAAABAAED0AQ
+NC0xOCAxOTo1Njo1NCIscmV2aXNpb249OTIzXV1sejQA3QAAALYKAAD-MHB4dQADKAAABAAED0AQ
 Ag4AAaABIAKgDgAPEAAN8MoBAgNADw_QBAUGB0AMkAgJCgtADJAPDA8NDw4MQAzw-wEA6-8nqgEQ
 Bg8gEAEgASAB8AACEAIOEAEgDyEgATAPQPDDDygP--DGD-gKD-8PgA-3Dw0B8AkBEAYOMAD-----
 -70f-wEArPMuyA9AAAoGMA--AA0PKA8zD0n9KwANIP0rDg0u-SrwcA9AAA8QDwMwDzoPJA8fDxwP
 Ew8RDw79KWD9KW79KSAAP0D9sAoAcB--AQD-1lD-----3Q==
 :: sfx/.info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM5OjEyIixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOToyNjo0MiJdXQ==
+NC0xOCAxOTo1Njo1NCJdXQ==
+:: src/
+:: src/button.lua
+button = {}
+button.__index = button
+
+function button.new(str, pos, callback, col)
+    local b = setmetatable({}, button)
+    b.text = str
+    b.x = pos[1]
+    b.y = pos[2]
+    b.w = 50
+    b.h = 50
+    b.callback = callback
+    --b.b_color = 1
+    b.col = col
+    b.hovered = false
+    b.txt_col = 7
+    return b
+end
+
+function button:update()
+    self.is_hovered = is_colliding(mx, my, self)
+end
+
+function button:get_value()
+    return self.value
+end
+
+function button:was_clicked()
+    self:callback()
+end
+
+function button:draw()
+    rectfill(self.x, self.y, self.x + self.w, self.y + self.h, self.col)
+    rect(self.x, self.y, self.x + self.w, self.y + self.h, self.col)
+    print(self.text, self.x + 8, self.y + 22, self.txt_col)
+
+    if self.is_hovered then
+        rect(self.x, self.y, self.x + self.w, self.y + self.h, 7)
+    end
+end
+
+function is_colliding(m_x, m_y, box)
+    if m_x < box.x + box.w and
+        m_x > box.x and
+        m_y < box.y + box.h and
+        m_y > box.y then
+        return true
+    else
+        return false
+    end
+end
+
+:: src/case.lua
+case = {}
+case.__index = case
+
+case_col = 6
+case_hover_col = 9
+
+function case.new(num, value, pos)
+    local case = setmetatable({}, case)
+    case.number = num
+    case.value = value
+    case.x = pos.x
+    case.y = pos.y
+    case.w = 20
+    case.open_t = 500
+    case.h = 15
+    case.hovered = false
+    case.picked = false
+    case.visable = true
+    case.move_t = 0
+    case.move_p = 121
+    case.end_loc = { 200, 60 }
+    case.col = 6
+    case.hover_col = 9
+
+    if num <= 9 then
+        case.txt_pos = { case.x + 8, case.y + 6 }
+    else
+        case.txt_pos = { case.x + 5, case.y + 6 }
+    end
+    return case
+end
+
+function case:update()
+    self.is_hovered = is_colliding(mx, my, self)
+    if self.is_hovered then
+        self.col = case_hover_col
+    else
+        self.col = case_col
+    end
+end
+
+function case:was_clicked()
+    self.picked = true
+    if player_case == nil then
+        player_case = self
+        goto_next_round()
+        -- Replace update() to prevent case from checking for mouse for the rest of game
+        self.update = function(self) end
+        self.col = 12
+        sfx(0)
+        return
+    else
+        self.visable = false
+    end
+    cases_to_pick = clamp(0, cases_to_pick - 1, 6)
+    case_manager:reset(self)
+    update_game_value(self.value, false)
+end
+
+function case:draw()
+    if self.visable then
+        rect(self.x, self.y, self.x + 20, self.y + 15, self.col)
+        print(self.number, self.txt_pos[1], self.txt_pos[2], self.col)
+    end
+end
+
+function is_colliding(m_x, m_y, box)
+    if m_x < box.x + box.w and
+        m_x > box.x and
+        m_y < box.y + box.h and
+        m_y > box.y then
+        return true
+    else
+        return false
+    end
+end
+
+:: src/label.lua
+Label = {}
+Label.__index = Label
+
+set_draw_target(userdata("u8", 1, 1))
+
+function Label.new(text, x, y, col)
+    local l = setmetatable({}, Label)
+    local _w = print(text, 0, 0)
+    set_draw_target()
+    l.interactive = true
+    l.w = _w
+    l.h = 8
+    l.x = x
+    l.y = y
+    l.text = text
+    l.col = col
+    l.default_col = col
+    l.hover_col = col
+    l.hovered = false
+    l.callback = function() error("Add a function") end
+    return l
+end
+
+function Label:update()
+    if is_colliding_lbl(mx, my, self) then
+        self.hovered = true
+        self.col = 12
+    else
+        self.col = self.default_col
+        self.hovered = false
+    end
+end
+
+function Label:do_func()
+    self:callback()
+end
+
+function is_colliding_lbl(m_x, m_y, box)
+    if m_x < box.x + box.w and
+        m_x > box.x and
+        m_y < box.y + box.h and
+        m_y > box.y then
+        return true
+    else
+        return false
+    end
+end
+
+function Label:draw()
+    --rect(self.x,self.y,self.x+self.w,self.y+self.h,3)
+    print(self.text, self.x, self.y, self.col)
+end
+
+:: src/.info.pod
+b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTA0LTE4IDE5OjMyOjM3Iixtb2RpZmllZD0iMjAyNS0w
+NC0xOCAxOTo1Njo1NCJdXQ==
 :: label.qoi
 b64$cW9pZgAAAeAAAAEOBAH_Ka3--f39-f39-f39-f39-f393v4AAAD9-cb_-6MAxDXCIcQ1wiHC
 NcIhwDXCIcA1yiHANcIhwDXCIcI1wiHANcIhwDXAIcQ1ziHCNcQhwjXEIcI1wiHGNf39-dQKwjX9
@@ -404,14 +592,528 @@ CsI1-f39-foKwDX9-egKwjX9-f39_grANf396ArCNf39-f36CsA1-f3oCsI1-f39-foKwDX9-egK
 wjX9-f39_grANf396ArCNf39-f36CsA1-f3oCsI1-f39-foKwDX9-egKwjX9-f39_grANf396ArC
 Nf39-f36CsA1-f3oCsI1-f39-foKwDX9-egK-f39-f39-f39-f39-f393gAAAAAAAAAB
 :: main.lua
---[[pod_format="raw",created="2025-03-27 22:38:39",modified="2025-04-18 19:26:41",revision=1204]]
+--[[pod_format="raw",created="2025-03-27 22:38:39",modified="2025-04-18 19:56:54",revision=1275]]
 
-cd("/projects/aor")
 
 include("src/case.lua")
 include("src/button.lua")
 include("src/label.lua")
-include("src/main.lua")
+
+function _init()
+    window {
+        width = 240,
+        height = 135,
+        resizeable = false,
+        title = "Accept or Reject"
+    }
+
+    FONT_COLOR = 9
+    CASES_PER_ROUND = { 6, 5, 4, 3, 2, 1, 1, 1, 0 }
+    BORDER_COLOR = 12
+    GAMESTATES = {
+        title = 0,
+        pick_case = 1,
+        display_values = 2,
+        offer = 3,
+        game_over = 5,
+        deal_accepted = 6
+    }
+
+    START_Y = 18
+    ROW_1_Y = 31
+    ROW_2_Y = 51
+    ROW_3_Y = 71
+    ROW_4_Y = 91
+
+    COL_1_X = 5
+    COL_2_X = 30
+    COL_3_X = 55
+    COL_4_X = 80
+    COL_5_X = 105
+    COL_6_X = 130
+
+    CASE_POS = {
+        { x = COL_1_X, y = ROW_1_Y },
+        { x = COL_2_X, y = ROW_1_Y },
+        { x = COL_3_X, y = ROW_1_Y },
+        { x = COL_4_X, y = ROW_1_Y },
+        { x = COL_5_X, y = ROW_1_Y },
+        { x = COL_6_X, y = ROW_1_Y },
+
+        { x = COL_1_X, y = ROW_2_Y },
+        { x = COL_2_X, y = ROW_2_Y },
+        { x = COL_3_X, y = ROW_2_Y },
+        { x = COL_4_X, y = ROW_2_Y },
+        { x = COL_5_X, y = ROW_2_Y },
+        { x = COL_6_X, y = ROW_2_Y },
+
+        { x = COL_1_X, y = ROW_3_Y },
+        { x = COL_2_X, y = ROW_3_Y },
+        { x = COL_3_X, y = ROW_3_Y },
+        { x = COL_4_X, y = ROW_3_Y },
+        { x = COL_5_X, y = ROW_3_Y },
+        { x = COL_6_X, y = ROW_3_Y },
+
+        { x = COL_1_X, y = ROW_4_Y },
+        { x = COL_2_X, y = ROW_4_Y },
+        { x = COL_3_X, y = ROW_4_Y },
+        { x = COL_4_X, y = ROW_4_Y },
+        { x = COL_5_X, y = ROW_4_Y },
+        { x = COL_6_X, y = ROW_4_Y },
+    }
+
+    CASE_VALUES = {
+        1,
+        3,
+        5,
+        10,
+        25,
+        50,
+        75,
+        100,
+        200,
+        250,
+        500,
+        750,
+        1000,
+        2500,
+        5000,
+        10000,
+        25000,
+        50000,
+        100000,
+        250000,
+        500000,
+        750000,
+        900000,
+        1000000
+    }
+
+    game_values = {
+        { value = 1,       in_play = true },
+        { value = 3,       in_play = true },
+        { value = 5,       in_play = true },
+        { value = 10,      in_play = true },
+        { value = 25,      in_play = true },
+        { value = 50,      in_play = true },
+        { value = 75,      in_play = true },
+        { value = 100,     in_play = true },
+        { value = 200,     in_play = true },
+        { value = 250,     in_play = true },
+        { value = 500,     in_play = true },
+        { value = 750,     in_play = true },
+        { value = 1000,    in_play = true },
+        { value = 2500,    in_play = true },
+        { value = 5000,    in_play = true },
+        { value = 10000,   in_play = true },
+        { value = 25000,   in_play = true },
+        { value = 50000,   in_play = true },
+        { value = 100000,  in_play = true },
+        { value = 250000,  in_play = true },
+        { value = 500000,  in_play = true },
+        { value = 750000,  in_play = true },
+        { value = 900000,  in_play = true },
+        { value = 1000000, in_play = true },
+    }
+
+    top_bar = {
+        x = 0,
+        y = 2,
+        str = "",
+        w = 0,
+        col = FONT_COLOR,
+        set_text = function(self, text)
+            self.str = text
+            self.w = print(text, 0, -6)
+        end,
+        draw = function(self)
+            print(self.str, self.x, self.y, FONT_COLOR)
+        end,
+        update = function(self)
+            self.x = self.x - 0.5
+            if self.x + self.w <= 0 then
+                self.x = 241
+            end
+        end,
+    }
+
+    current_offer = 0
+    player_case = nil
+    show_values = false
+    cases_to_pick = 7
+    round = 0
+    last_case = nil
+    can_player_click = true
+    mx, my, mb = nil, nil, nil
+    game_state = GAMESTATES.title
+    is_case_opening = false
+    lbl_play = Label.new("PLAY", 110, 110, FONT_COLOR)
+    lbl_play.callback = start_game
+    lbl_main = Label.new("Back to Main", 60, 120, FONT_COLOR)
+    lbl_main.callback = reset_game
+    btn_deal = button.new("ACCEPT", { 20, 50 }, accept_deal, 27, 1)
+    btn_no_deal = button.new("REJECT", { 95, 50 }, reject_deal, 24, 2)
+    offer_btns = {}
+    add(offer_btns, btn_deal)
+    add(offer_btns, btn_no_deal)
+end
+
+function _update()
+    top_bar:update()
+
+    if not is_case_opening then
+        mx, my, mb = mouse()
+    end
+
+    if mb == 1 then
+        if m_delay == 0 then
+            on_mouse_click(mx, my)
+            m_delay = m_delay + 1
+            return
+        end
+    else
+        m_delay = 0
+    end
+
+    can_player_click = not is_case_opening
+
+    if game_state == GAMESTATES.title then
+        update_title()
+    elseif game_state == GAMESTATES.pick_case then
+        update_pick_case()
+    elseif game_state == GAMESTATES.offer then
+        update_offer()
+    elseif game_state == GAMESTATES.deal_accepted then
+        update_deal_accepted()
+    elseif game_state == GAMESTATES.game_over then
+        update_game_over()
+    end
+end
+
+function _draw()
+    cls()
+    if game_state == GAMESTATES.title then
+        draw_title()
+    elseif game_state == GAMESTATES.pick_case then
+        draw_pick_case()
+    elseif game_state == GAMESTATES.offer then
+        draw_offer()
+        draw_border()
+    elseif game_state == GAMESTATES.deal_accepted then
+        draw_deal_accepted()
+    elseif game_state == GAMESTATES.game_over then
+        draw_game_over()
+    end
+end
+
+function on_mouse_click(x, y)
+    if is_case_opening then
+        return
+    end
+
+    if game_state == GAMESTATES.title then
+        if lbl_play.hovered then
+            lbl_play:do_func()
+            return
+        end
+    elseif game_state == GAMESTATES.pick_case then
+        if can_player_click then
+            for c in all(cases) do
+                if not c.picked and c.is_hovered then
+                    can_player_click = false
+                    c:was_clicked()
+                    update_topbar(cases_to_pick)
+                    return
+                end
+            end
+        end
+    elseif game_state == GAMESTATES.offer then
+        for b in all(offer_btns) do
+            if b.is_hovered then
+                b:was_clicked()
+                return
+            end
+        end
+    elseif game_state == GAMESTATES.deal_accepted or
+    			game_state == GAMESTATES.game_over then
+    		if lbl_main.hovered then
+            lbl_main:do_func()
+            return
+        	end	
+    end
+end
+
+cases = {}
+
+case_manager = {
+    t = 80,
+    cover_num = 0,
+    inside_num = 0,
+    update = function(self)
+        is_case_opening = self.t < 80
+
+        if self.t < 90 then
+            self.t = self.t + 1
+        end
+        if self.t >= 90 then
+            if cases_to_pick == 0 and round <= 8 then
+                game_state = GAMESTATES.offer
+                is_case_opening = false
+                offer_index = 1
+                top_bar:set_text("BANKER'S OFFER")
+                current_offer = get_offer()
+            else
+                if round <= 8 then
+                    game_state = GAMESTATES.pick_case
+                elseif round == 9 then
+                    game_state = GAMESTATES.game_over
+                end
+            end
+        end
+    end,
+    reset = function(self, case)
+        self.t = 0
+        self.cover_num = case.number
+        self.inside_num = case.value
+    end,
+}
+
+function reset_game()
+    game_state = GAMESTATES.title
+    offer_index = 1
+    round = 0
+    cases_to_pick = 7
+    player_case = nil
+    for k, v in ipairs(game_values) do
+        game_values[k].in_play = true
+    end
+end
+
+function get_offer()
+    local offer
+    local values_left = 0
+    local sum = 0
+    local off_set = 0.50
+    for _, v in ipairs(game_values) do
+        if v.in_play then
+            values_left = values_left + 1
+            sum = sum + v.value
+        end
+    end
+    offer = math.floor((sum / values_left) * off_set)
+    return offer
+end
+
+function update_game_value(value, in_play)
+    for _, v in ipairs(game_values) do
+        if v.value == value then
+            v.in_play = in_play
+            break
+        end
+    end
+end
+
+function shuffle(t)
+    for i = #t, 1, -1 do
+        local j = math.floor(math.random(i)) + 1
+        t[i], t[j] = t[j], t[i]
+    end
+end
+
+function goto_next_round()
+    round = round + 1
+    cases_to_pick = CASES_PER_ROUND[round]
+    update_topbar(cases_to_pick)
+    if round < 9 then
+        game_state = GAMESTATES.pick_case
+    end
+end
+
+function setup_cases()
+    cases = {}
+    shuffle(CASE_VALUES)
+    for i = 1, 24 do
+        table.insert(cases, case.new(i, CASE_VALUES[i], CASE_POS[i]))
+    end
+end
+
+function start_game()
+    setup_cases()
+    top_bar:set_text("PICK YOUR CASE")
+    game_state = GAMESTATES.pick_case
+end
+
+function accept_deal()
+    game_state = GAMESTATES.deal_accepted
+end
+
+function reject_deal()
+    if round < 7 then
+        goto_next_round()
+    else
+        game_state = GAMESTATES.game_over
+        round = round + 1
+        for _, c in ipairs(cases) do
+            if c.picked == false then
+                notify("last case #: " .. c.number .. ". This is round: " .. round)
+                last_case = c
+            end
+        end
+    end
+end
+
+function update_title()
+    lbl_play:update()
+end
+
+function update_pick_case()
+    case_manager:update()
+
+    for c in all(cases) do
+        c:update()
+    end
+end
+
+function update_offer()
+    btn_deal:update()
+    btn_no_deal:update()
+end
+
+function update_topbar(n_cases)
+    local _txt = ""
+    if player_case then
+        if n_cases > 1 then
+            _txt = "PICK " .. n_cases .. " MORE CASES"
+        else
+            _txt = "PICK " .. n_cases .. " CASE"
+        end
+    else
+        _txt = "Pick your case"
+    end
+    top_bar:set_text(_txt)
+end
+
+function update_deal_accepted()
+    lbl_main:update()
+end
+
+function update_game_over()
+	 lbl_main:update()
+end
+
+function draw_border()
+    top_bar:draw()
+    line(0, 10, 240, 10, BORDER_COLOR)
+    line(0, 134, 240, 134, BORDER_COLOR)
+    line(0, 0, 240, 0, BORDER_COLOR)
+    line(0, 0, 0, 134, BORDER_COLOR)
+    line(155, 10, 155, 155, BORDER_COLOR)
+    line(239, 0, 239, 134, BORDER_COLOR)
+end
+
+function draw_title()
+    print("Accept", 70, 38, FONT_COLOR)
+    print("or", 100, 52, FONT_COLOR)
+    print("Reject", 110, 68, FONT_COLOR)
+    lbl_play:draw()
+end
+
+function draw_pick_case()
+    if is_case_opening then
+        cls()
+        if case_manager.t < 90 then
+            print("Case " .. case_manager.cover_num .. " had", 85, 60, FONT_COLOR)
+            print("$" .. comma_value(case_manager.inside_num), 85, 70, FONT_COLOR)
+        end
+        return
+    end
+
+    for _, r in ipairs(cases) do
+        if not r.picked or 4 == 4 then
+            r:draw()
+        end
+    end
+
+    draw_display_values()
+    draw_border()
+end
+
+function draw_display_values()
+    rectfill(156, 9, 250, 133, 0)
+
+    for i = 1, 12 do
+        if game_values[i].in_play then
+            col = 12
+        else
+            col = 5
+        end
+        print("$" .. comma_value(game_values[i].value), 37 + 123, START_Y + (i - 1) * 9, col)
+    end
+
+    for i2 = 1, 12 do
+        if game_values[i2 + 12].in_play then
+            col = 12
+        else
+            col = 5
+        end
+        print("$" .. comma_value(game_values[i2 + 12].value), 65 + 123, START_Y + (i2 - 1) * 9, col)
+    end
+end
+
+function draw_offer()
+    if round == 7 then
+        print("LAST OFFER", 56, 20, FONT_COLOR)
+    end
+    print("Offer: $" .. comma_value(current_offer), 56, 30, FONT_COLOR)
+    btn_deal:draw()
+    btn_no_deal:draw()
+    draw_display_values()
+end
+
+function draw_game_over()
+    print("You turned down all offers", 60, 30, FONT_COLOR)
+    print("Your Case Value", 60, 45, FONT_COLOR)
+    print("$" .. comma_value(player_case.value), 60, 58, FONT_COLOR)
+    --print("SPACE to return to main", 60, 120, FONT_COLOR)
+    lbl_main:draw()
+end
+
+function draw_deal_accepted()
+    print("You accepted", 60, 30, FONT_COLOR)
+    print("$" .. comma_value(current_offer), 60, 38, FONT_COLOR)
+    print("Your case had", 60, 50, FONT_COLOR)
+    print("$" .. comma_value(player_case.value), 60, 58, FONT_COLOR)
+
+    if current_offer > player_case.value then
+        print("Well played", 60, 100, FONT_COLOR)
+    else
+        print("Better luck next time", 60, 100, FONT_COLOR)
+    end
+
+    --print("SPACE to return to main", 60, 120, FONT_COLOR)
+    lbl_main:draw()
+end
+
+function comma_value(amount)
+    local formatted = amount
+    local _k = nil
+    while true do
+        formatted, _k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
+        if (_k == 0) then
+            break
+        end
+    end
+    return formatted
+end
+
+function clamp(low, n, high)
+    return math.min(math.max(n, low), high)
+end
+
+function lerp(a, b, t)
+    return a + (b - a) * t
+end
+
 :: .info.pod
 b64$LS1bW3BvZCxhdXRob3I9IlN1Z2Fydm9pZCIsY3JlYXRlZD0iMjAyNS0wMy0yNyAyMjozOTox
 MiIsaWNvbj11c2VyZGF0YSgidTgiLDE2LDE2LCIwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAx
@@ -423,10 +1125,10 @@ MDEwNzA3MDcwNzAxMDcwNzA3MDcwMTA2MDYwNjA2MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEw
 MTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwNjA2MDYwNjAxMDcwNzA3
 MDcwMTA3MDcwNzA3MDEwMTA2MDEwMTA2MDEwNzAxMDEwNzAxMDcwMTAxMDcwMTAxMDYwNjA2MDYw
 MTA3MDcwNzA3MDEwNzA3MDcwNzAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAx
-MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMSIpLG1vZGlmaWVkPSIyMDI1LTA0LTE4IDE5OjI2
-OjQyIixub3Rlcz0iIixydW50aW1lPTE2LHRpdGxlPSJBY2NlcHQgb3IgUmVqZWN0Iix2ZXJzaW9u
-PSIiLHdvcmtzcGFjZXM9e3tsb2NhdGlvbj0ibWFpbi5sdWEjNCIsd29ya3NwYWNlX2luZGV4PTF9
-LHtsb2NhdGlvbj0iZ2Z4LzAuZ2Z4Iix3b3Jrc3BhY2VfaW5kZXg9Mn0se2xvY2F0aW9uPSJtYXAv
-MC5tYXAiLHdvcmtzcGFjZV9pbmRleD0zfSx7bG9jYXRpb249InNmeC8wLnNmeCIsd29ya3NwYWNl
-X2luZGV4PTR9fV1d
+MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMSIpLG1vZGlmaWVkPSIyMDI1LTA0LTE4IDE5OjU2
+OjU0Iixub3Rlcz0iIixydW50aW1lPTE2LHRpdGxlPSJBY2NlcHQgb3IgUmVqZWN0Iix2ZXJzaW9u
+PSIiLHdvcmtzcGFjZXM9e3tsb2NhdGlvbj0ibWFpbi5sdWEjNDIyIix3b3Jrc3BhY2VfaW5kZXg9
+MX0se2xvY2F0aW9uPSJnZngvMC5nZngiLHdvcmtzcGFjZV9pbmRleD0yfSx7bG9jYXRpb249Im1h
+cC8wLm1hcCIsd29ya3NwYWNlX2luZGV4PTN9LHtsb2NhdGlvbj0ic2Z4LzAuc2Z4Iix3b3Jrc3Bh
+Y2VfaW5kZXg9NH19XV0=
 :: [eoc]
