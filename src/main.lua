@@ -1,5 +1,11 @@
 
 function _init()
+    window{
+        width      = 240,
+        height     = 135,
+        resizeable = false,
+        title      = "Accept or Reject"
+    }
     FONT_COLOR = 9
     PLEASE_RENAME = { 6, 5, 4, 3, 2, 1, 1, 1, 0 }
     BORDER_COLOR = 12
@@ -131,7 +137,7 @@ function _init()
     offer_btns = {}
     add(offer_btns, btn_deal)
     add(offer_btns, btn_no_deal)
-    vid(3)
+    --vid(3)
 end
 
 function _update()
