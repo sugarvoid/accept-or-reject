@@ -4,33 +4,33 @@ version 2
 :: gfx/
 :: gfx/0.gfx
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM4OjM5Iixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOTo1Njo1NCIscmV2aXNpb249OTQyXV1sejQAjAAAABoxAADzIXtbMF09e2JtcD1weHUA
+NS0wNCAxNjowMzoxOCIscmV2aXNpb249OTU3XV1sejQAjAAAABoxAADzIXtbMF09e2JtcD1weHUA
 QyAQEATwVgcQB8AX0BfABxAH8FYsZmxhZ3M9MCxwYW5feAgAynk9MCx6b29tPTh9LD4AQAAH0AcE
 AC-wzjkAHC-w8DEA------------------------------------------------------------
 ----plBtPTh9fQ==
 :: gfx/.info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM5OjEyIixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOTo1Njo1NCJdXQ==
+NS0wNCAxNjowMzoxOCJdXQ==
 :: map/
 :: map/0.map
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM4OjM5Iixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOTo1Njo1NCIscmV2aXNpb249OTIwXV1sejQAaAAAAFgQAADwCHt7Ym1wPXVzZXJkYXRh
+NS0wNCAxNjowMzoxOCIscmV2aXNpb249OTM0XV1sejQAaAAAAFgQAADwCHt7Ym1wPXVzZXJkYXRh
 KCJpMTYiLDMyAwAvIjABAP--------------------vxCCIpLGhpZGRlbj1mYWxzZSxwYW5feD0w
 CADSeT0wLHRpbGVfaD0xNgoAEHcKAIB6b29tPTF9fQ==
 :: map/.info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM5OjEyIixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOTo1Njo1NCJdXQ==
+NS0wNCAxNjowMzoxOCJdXQ==
 :: sfx/
 :: sfx/0.sfx
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM4OjQwIixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOTo1Njo1NCIscmV2aXNpb249OTIzXV1sejQA3QAAALYKAAD-MHB4dQADKAAABAAED0AQ
+NS0wNCAxNjowMzoxOCIscmV2aXNpb249OTM3XV1sejQA3QAAALYKAAD-MHB4dQADKAAABAAED0AQ
 Ag4AAaABIAKgDgAPEAAN8MoBAgNADw_QBAUGB0AMkAgJCgtADJAPDA8NDw4MQAzw-wEA6-8nqgEQ
 Bg8gEAEgASAB8AACEAIOEAEgDyEgATAPQPDDDygP--DGD-gKD-8PgA-3Dw0B8AkBEAYOMAD-----
 -70f-wEArPMuyA9AAAoGMA--AA0PKA8zD0n9KwANIP0rDg0u-SrwcA9AAA8QDwMwDzoPJA8fDxwP
 Ew8RDw79KWD9KW79KSAAP0D9sAoAcB--AQD-1lD-----3Q==
 :: sfx/.info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM5OjEyIixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOTo1Njo1NCJdXQ==
+NS0wNCAxNjowMzoxOCJdXQ==
 :: src/
 :: src/button.lua
 button = {}
@@ -218,7 +218,7 @@ end
 
 :: src/.info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTA0LTE4IDE5OjMyOjM3Iixtb2RpZmllZD0iMjAyNS0w
-NC0xOCAxOTo1Njo1NCJdXQ==
+NS0wNCAxNjowMzoxOCJdXQ==
 :: label.qoi
 b64$cW9pZgAAAeAAAAEOBAH_Ka3--f39-f39-f39-f39-f393v4AAAD9-cb_-6MAxDXCIcQ1wiHC
 NcIhwDXCIcA1yiHANcIhwDXCIcI1wiHANcIhwDXAIcQ1ziHCNcQhwjXEIcI1wiHGNf39-dQKwjX9
@@ -592,7 +592,7 @@ CsI1-f39-foKwDX9-egKwjX9-f39_grANf396ArCNf39-f36CsA1-f3oCsI1-f39-foKwDX9-egK
 wjX9-f39_grANf396ArCNf39-f36CsA1-f3oCsI1-f39-foKwDX9-egKwjX9-f39_grANf396ArC
 Nf39-f36CsA1-f3oCsI1-f39-foKwDX9-egK-f39-f39-f39-f39-f393gAAAAAAAAAB
 :: main.lua
---[[pod_format="raw",created="2025-03-27 22:38:39",modified="2025-04-18 19:56:54",revision=1275]]
+--[[pod_format="raw",created="2025-03-27 22:38:39",modified="2025-05-04 16:03:18",revision=1298]]
 
 
 include("src/case.lua")
@@ -600,12 +600,14 @@ include("src/button.lua")
 include("src/label.lua")
 
 function _init()
-    window {
-        width = 240,
-        height = 135,
-        resizeable = false,
-        title = "Accept or Reject"
-    }
+--    window {
+--        width = 240,
+--        height = 135,
+--        resizeable = false,
+--        title = "Accept or Reject"
+--    }
+--    
+   vid(3)
 
     FONT_COLOR = 9
     CASES_PER_ROUND = { 6, 5, 4, 3, 2, 1, 1, 1, 0 }
@@ -803,6 +805,9 @@ function _draw()
         draw_deal_accepted()
     elseif game_state == GAMESTATES.game_over then
         draw_game_over()
+    end
+    if not is_case_opening then
+    	spr(1, mx, my)
     end
 end
 
@@ -1125,10 +1130,10 @@ MDEwNzA3MDcwNzAxMDcwNzA3MDcwMTA2MDYwNjA2MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEw
 MTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwNjA2MDYwNjAxMDcwNzA3
 MDcwMTA3MDcwNzA3MDEwMTA2MDEwMTA2MDEwNzAxMDEwNzAxMDcwMTAxMDcwMTAxMDYwNjA2MDYw
 MTA3MDcwNzA3MDEwNzA3MDcwNzAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAx
-MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMSIpLG1vZGlmaWVkPSIyMDI1LTA0LTE4IDE5OjU2
-OjU0Iixub3Rlcz0iIixydW50aW1lPTE2LHRpdGxlPSJBY2NlcHQgb3IgUmVqZWN0Iix2ZXJzaW9u
-PSIiLHdvcmtzcGFjZXM9e3tsb2NhdGlvbj0ibWFpbi5sdWEjNDIyIix3b3Jrc3BhY2VfaW5kZXg9
-MX0se2xvY2F0aW9uPSJnZngvMC5nZngiLHdvcmtzcGFjZV9pbmRleD0yfSx7bG9jYXRpb249Im1h
-cC8wLm1hcCIsd29ya3NwYWNlX2luZGV4PTN9LHtsb2NhdGlvbj0ic2Z4LzAuc2Z4Iix3b3Jrc3Bh
-Y2VfaW5kZXg9NH19XV0=
+MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMSIpLGxvd2NvbF9pY29uPXRydWUsbW9kaWZpZWQ9
+IjIwMjUtMDUtMDQgMTY6MDM6MTgiLG5vdGVzPSIiLHJ1bnRpbWU9MTcsdGl0bGU9IkFjY2VwdCBv
+ciBSZWplY3QiLHZlcnNpb249IiIsd29ya3NwYWNlcz17e2xvY2F0aW9uPSJtYWluLmx1YSMyMTUi
+LHdvcmtzcGFjZV9pbmRleD0xfSx7bG9jYXRpb249ImdmeC8wLmdmeCIsd29ya3NwYWNlX2luZGV4
+PTJ9LHtsb2NhdGlvbj0ibWFwLzAubWFwIix3b3Jrc3BhY2VfaW5kZXg9M30se2xvY2F0aW9uPSJz
+ZngvMC5zZngiLHdvcmtzcGFjZV9pbmRleD00fX1dXQ==
 :: [eoc]
