@@ -4,33 +4,33 @@ version 2
 :: gfx/
 :: gfx/0.gfx
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM4OjM5Iixtb2RpZmllZD0iMjAyNS0w
-NS0wNCAxNjowMzoxOCIscmV2aXNpb249OTU3XV1sejQAjAAAABoxAADzIXtbMF09e2JtcD1weHUA
+NS0yOCAxMjo0NDo0NiIscmV2aXNpb249OTgxXV1sejQAjAAAABoxAADzIXtbMF09e2JtcD1weHUA
 QyAQEATwVgcQB8AX0BfABxAH8FYsZmxhZ3M9MCxwYW5feAgAynk9MCx6b29tPTh9LD4AQAAH0AcE
 AC-wzjkAHC-w8DEA------------------------------------------------------------
 ----plBtPTh9fQ==
 :: gfx/.info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM5OjEyIixtb2RpZmllZD0iMjAyNS0w
-NS0wNCAxNjowMzoxOCJdXQ==
+NS0yOCAxMjo0NDo0NyJdXQ==
 :: map/
 :: map/0.map
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM4OjM5Iixtb2RpZmllZD0iMjAyNS0w
-NS0wNCAxNjowMzoxOCIscmV2aXNpb249OTM0XV1sejQAaAAAAFgQAADwCHt7Ym1wPXVzZXJkYXRh
+NS0yOCAxMjo0NDo0NiIscmV2aXNpb249OTU4XV1sejQAaAAAAFgQAADwCHt7Ym1wPXVzZXJkYXRh
 KCJpMTYiLDMyAwAvIjABAP--------------------vxCCIpLGhpZGRlbj1mYWxzZSxwYW5feD0w
 CADSeT0wLHRpbGVfaD0xNgoAEHcKAIB6b29tPTF9fQ==
 :: map/.info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM5OjEyIixtb2RpZmllZD0iMjAyNS0w
-NS0wNCAxNjowMzoxOCJdXQ==
+NS0yOCAxMjo0NDo0NyJdXQ==
 :: sfx/
 :: sfx/0.sfx
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM4OjQwIixtb2RpZmllZD0iMjAyNS0w
-NS0wNCAxNjowMzoxOCIscmV2aXNpb249OTM3XV1sejQA3QAAALYKAAD-MHB4dQADKAAABAAED0AQ
+NS0yOCAxMjo0NDo0NiIscmV2aXNpb249OTYxXV1sejQA3QAAALYKAAD-MHB4dQADKAAABAAED0AQ
 Ag4AAaABIAKgDgAPEAAN8MoBAgNADw_QBAUGB0AMkAgJCgtADJAPDA8NDw4MQAzw-wEA6-8nqgEQ
 Bg8gEAEgASAB8AACEAIOEAEgDyEgATAPQPDDDygP--DGD-gKD-8PgA-3Dw0B8AkBEAYOMAD-----
 -70f-wEArPMuyA9AAAoGMA--AA0PKA8zD0n9KwANIP0rDg0u-SrwcA9AAA8QDwMwDzoPJA8fDxwP
 Ew8RDw79KWD9KW79KSAAP0D9sAoAcB--AQD-1lD-----3Q==
 :: sfx/.info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAzLTI3IDIyOjM5OjEyIixtb2RpZmllZD0iMjAyNS0w
-NS0wNCAxNjowMzoxOCJdXQ==
+NS0yOCAxMjo0NDo0NyJdXQ==
 :: src/
 :: src/button.lua
 button = {}
@@ -218,7 +218,7 @@ end
 
 :: src/.info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTA0LTE4IDE5OjMyOjM3Iixtb2RpZmllZD0iMjAyNS0w
-NS0wNCAxNjowMzoxOCJdXQ==
+NS0yOCAxMjo0NDo0NyJdXQ==
 :: label.qoi
 b64$cW9pZgAAAeAAAAEOBAH_Ka3--f39-f39-f39-f39-f393v4AAAD9-cb_-6MAxDXCIcQ1wiHC
 NcIhwDXCIcA1yiHANcIhwDXCIcI1wiHANcIhwDXAIcQ1ziHCNcQhwjXEIcI1wiHGNf39-dQKwjX9
@@ -592,7 +592,7 @@ CsI1-f39-foKwDX9-egKwjX9-f39_grANf396ArCNf39-f36CsA1-f3oCsI1-f39-foKwDX9-egK
 wjX9-f39_grANf396ArCNf39-f36CsA1-f3oCsI1-f39-foKwDX9-egKwjX9-f39_grANf396ArC
 Nf39-f36CsA1-f3oCsI1-f39-foKwDX9-egK-f39-f39-f39-f39-f393gAAAAAAAAAB
 :: main.lua
---[[pod_format="raw",created="2025-03-27 22:38:39",modified="2025-05-04 16:03:18",revision=1298]]
+--[[pod_format="raw",created="2025-03-27 22:38:39",modified="2025-05-28 12:44:46",revision=1327]]
 
 
 include("src/case.lua")
@@ -607,12 +607,12 @@ function _init()
 --        title = "Accept or Reject"
 --    }
 --    
-   vid(3)
+	vid(3)
 
-    FONT_COLOR = 9
-    CASES_PER_ROUND = { 6, 5, 4, 3, 2, 1, 1, 1, 0 }
-    BORDER_COLOR = 12
-    GAMESTATES = {
+   FONT_COLOR = 9
+   CASES_PER_ROUND = { 6, 5, 4, 3, 2, 1, 1, 1, 0 }
+   BORDER_COLOR = 12
+   GAMESTATES = {
         title = 0,
         pick_case = 1,
         display_values = 2,
@@ -620,21 +620,21 @@ function _init()
         game_over = 5,
         deal_accepted = 6
     }
+	
+	START_Y = 18
+   ROW_1_Y = 31
+   ROW_2_Y = 51
+   ROW_3_Y = 71
+   ROW_4_Y = 91
 
-    START_Y = 18
-    ROW_1_Y = 31
-    ROW_2_Y = 51
-    ROW_3_Y = 71
-    ROW_4_Y = 91
+   COL_1_X = 5
+   COL_2_X = 30
+   COL_3_X = 55
+   COL_4_X = 80
+   COL_5_X = 105
+   COL_6_X = 130
 
-    COL_1_X = 5
-    COL_2_X = 30
-    COL_3_X = 55
-    COL_4_X = 80
-    COL_5_X = 105
-    COL_6_X = 130
-
-    CASE_POS = {
+   CASE_POS = {
         { x = COL_1_X, y = ROW_1_Y },
         { x = COL_2_X, y = ROW_1_Y },
         { x = COL_3_X, y = ROW_1_Y },
@@ -684,39 +684,44 @@ function _init()
         25000,
         50000,
         100000,
-        250000,
+        200000,
+        300000,
         500000,
         750000,
-        900000,
         1000000
     }
 
-    game_values = {
-        { value = 1,       in_play = true },
-        { value = 3,       in_play = true },
-        { value = 5,       in_play = true },
-        { value = 10,      in_play = true },
-        { value = 25,      in_play = true },
-        { value = 50,      in_play = true },
-        { value = 75,      in_play = true },
-        { value = 100,     in_play = true },
-        { value = 200,     in_play = true },
-        { value = 250,     in_play = true },
-        { value = 500,     in_play = true },
-        { value = 750,     in_play = true },
-        { value = 1000,    in_play = true },
-        { value = 2500,    in_play = true },
-        { value = 5000,    in_play = true },
-        { value = 10000,   in_play = true },
-        { value = 25000,   in_play = true },
-        { value = 50000,   in_play = true },
-        { value = 100000,  in_play = true },
-        { value = 250000,  in_play = true },
-        { value = 500000,  in_play = true },
-        { value = 750000,  in_play = true },
-        { value = 900000,  in_play = true },
-        { value = 1000000, in_play = true },
-    }
+--    game_values = {
+--        { value = 1,       in_play = true },
+--        { value = 3,       in_play = true },
+--        { value = 5,       in_play = true },
+--        { value = 10,      in_play = true },
+--        { value = 25,      in_play = true },
+--        { value = 50,      in_play = true },
+--        { value = 75,      in_play = true },
+--        { value = 100,     in_play = true },
+--        { value = 200,     in_play = true },
+--        { value = 250,     in_play = true },
+--        { value = 500,     in_play = true },
+--        { value = 750,     in_play = true },
+--        { value = 1000,    in_play = true },
+--        { value = 2500,    in_play = true },
+--        { value = 5000,    in_play = true },
+--        { value = 10000,   in_play = true },
+--        { value = 25000,   in_play = true },
+--        { value = 50000,   in_play = true },
+--        { value = 100000,  in_play = true },
+--        { value = 250000,  in_play = true },
+--        { value = 500000,  in_play = true },
+--        { value = 750000,  in_play = true },
+--        { value = 900000,  in_play = true },
+--        { value = 1000000, in_play = true },
+--    }
+    
+   game_values = {}
+    for _, v in ipairs(CASE_VALUES) do
+        add(game_values, {value=v, in_play = true})
+    end
 
     top_bar = {
         x = 0,
@@ -894,19 +899,45 @@ function reset_game()
     end
 end
 
+--function get_offer()
+--    local offer
+--    local values_left = 0
+--    local sum = 0
+--    local off_set = 0.50
+--    for _, v in ipairs(game_values) do
+--        if v.in_play then
+--            values_left = values_left + 1
+--            sum = sum + v.value
+--        end
+--    end
+--    offer = math.floor((sum / values_left) * off_set)
+--    return offer
+--end
+
 function get_offer()
-    local offer
     local values_left = 0
-    local sum = 0
-    local off_set = 0.50
+    local sum, lowest = 0, 1000000
     for _, v in ipairs(game_values) do
         if v.in_play then
             values_left = values_left + 1
             sum = sum + v.value
+            if v.value < lowest then
+                lowest = v.value
+            end
         end
     end
-    offer = math.floor((sum / values_left) * off_set)
-    return offer
+    local off_set = 1 - 0.7*(values_left/#game_values)
+    local initial = lowest + (sum/values_left - lowest) * off_set
+    local next_lower = -1
+    for _, v in ipairs(game_values) do
+        if v.in_play then
+            if v.value > next_lower and v.value <= initial then
+                next_lower = v.value
+            end
+        end
+    end
+    --return math.floor(next_lower*(1-off_set) + initial*off_set)
+    return math.floor(next_lower*(1-off_set*off_set) + (initial * off_set * off_set))
 end
 
 function update_game_value(value, in_play)
@@ -1065,11 +1096,29 @@ function draw_display_values()
     end
 end
 
+--function draw_offer()
+--    if round == 7 then
+--        print("LAST OFFER", 56, 20, FONT_COLOR)
+--    end
+--    print("Offer: $" .. comma_value(current_offer), 56, 30, FONT_COLOR)
+--    btn_deal:draw()
+--    btn_no_deal:draw()
+--    draw_display_values()
+--end
+
+function pluralize_cases(n)
+  if (n == 1) return "1 case"
+  return tostr(n.." cases")
+end
+
 function draw_offer()
     if round == 7 then
         print("LAST OFFER", 56, 20, FONT_COLOR)
+    else
+        print("Next Round:\n   "..pluralize_cases(CASES_PER_ROUND[round+1]),
+              100, 112)
     end
-    print("Offer: $" .. comma_value(current_offer), 56, 30, FONT_COLOR)
+    print("Offer: $" .. comma_value(current_offer), 50, 30, FONT_COLOR)
     btn_deal:draw()
     btn_no_deal:draw()
     draw_display_values()
@@ -1079,7 +1128,6 @@ function draw_game_over()
     print("You turned down all offers", 60, 30, FONT_COLOR)
     print("Your Case Value", 60, 45, FONT_COLOR)
     print("$" .. comma_value(player_case.value), 60, 58, FONT_COLOR)
-    --print("SPACE to return to main", 60, 120, FONT_COLOR)
     lbl_main:draw()
 end
 
@@ -1094,8 +1142,6 @@ function draw_deal_accepted()
     else
         print("Better luck next time", 60, 100, FONT_COLOR)
     end
-
-    --print("SPACE to return to main", 60, 120, FONT_COLOR)
     lbl_main:draw()
 end
 
@@ -1115,9 +1161,9 @@ function clamp(low, n, high)
     return math.min(math.max(n, low), high)
 end
 
-function lerp(a, b, t)
-    return a + (b - a) * t
-end
+--function lerp(a, b, t)
+--    return a + (b - a) * t
+--end
 
 :: .info.pod
 b64$LS1bW3BvZCxhdXRob3I9IlN1Z2Fydm9pZCIsY3JlYXRlZD0iMjAyNS0wMy0yNyAyMjozOTox
@@ -1131,9 +1177,9 @@ MTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwNjA2MDYwNjAxMDcwNzA3
 MDcwMTA3MDcwNzA3MDEwMTA2MDEwMTA2MDEwNzAxMDEwNzAxMDcwMTAxMDcwMTAxMDYwNjA2MDYw
 MTA3MDcwNzA3MDEwNzA3MDcwNzAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAx
 MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMSIpLGxvd2NvbF9pY29uPXRydWUsbW9kaWZpZWQ9
-IjIwMjUtMDUtMDQgMTY6MDM6MTgiLG5vdGVzPSIiLHJ1bnRpbWU9MTcsdGl0bGU9IkFjY2VwdCBv
-ciBSZWplY3QiLHZlcnNpb249IiIsd29ya3NwYWNlcz17e2xvY2F0aW9uPSJtYWluLmx1YSMyMTUi
-LHdvcmtzcGFjZV9pbmRleD0xfSx7bG9jYXRpb249ImdmeC8wLmdmeCIsd29ya3NwYWNlX2luZGV4
-PTJ9LHtsb2NhdGlvbj0ibWFwLzAubWFwIix3b3Jrc3BhY2VfaW5kZXg9M30se2xvY2F0aW9uPSJz
-ZngvMC5zZngiLHdvcmtzcGFjZV9pbmRleD00fX1dXQ==
+IjIwMjUtMDUtMjggMTI6NDQ6NDciLG5vdGVzPSIiLHJ1bnRpbWU9MTcsdGl0bGU9IkFjY2VwdCBv
+ciBSZWplY3QiLHZlcnNpb249IiIsd29ya3NwYWNlcz17e2xvY2F0aW9uPSJtYWluLmx1YSMzMyIs
+d29ya3NwYWNlX2luZGV4PTF9LHtsb2NhdGlvbj0iZ2Z4LzAuZ2Z4Iix3b3Jrc3BhY2VfaW5kZXg9
+Mn0se2xvY2F0aW9uPSJtYXAvMC5tYXAiLHdvcmtzcGFjZV9pbmRleD0zfSx7bG9jYXRpb249InNm
+eC8wLnNmeCIsd29ya3NwYWNlX2luZGV4PTR9fV1d
 :: [eoc]
